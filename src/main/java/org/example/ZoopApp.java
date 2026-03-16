@@ -35,7 +35,7 @@ public class ZoopApp {
                 break;
                 case 2 : addAnimal(sc, animals);
                 break;
-                case 3 : System.out.println("Chose option 3");
+                case 3 : searchAnimal(sc, animals);
                 break;
                 default: System.out.println("Choose between options 1-4");
             }
@@ -75,5 +75,22 @@ public class ZoopApp {
 
         System.out.println("""
                 -----------""");
+    }
+
+    public static void searchAnimal(Scanner sc, ArrayList<String[]> animals){
+        System.out.println("Enter animal name to search: ");
+        String name = sc.nextLine();
+
+        for(String[] animal: animals){
+            if(name.equalsIgnoreCase(animal[0])){
+                System.out.println("Animal Found");
+                System.out.println("Name: " + animal[0] +
+                        "\nspecies: " + animal[1]);
+                return;
+            }
+            else{
+                System.out.println("Animal not found!");
+            }
+        }
     }
 }
