@@ -1,11 +1,15 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class ZoopApp {
     public static void main(String[] args) {
+        Animal animal= new Animal();
+        String[] animalArray = new String[2];
+        ArrayList<String[]> animals = new ArrayList<>();
+
         System.out.println("""
                 Welcome to the Zoo Management System
                 ====================================
@@ -23,11 +27,12 @@ public class ZoopApp {
         while(option != 4){
             System.out.print("option (1-4): ");
             option = sc.nextInt();
+            sc.nextLine();
 
             switch (option){
-                case 1 : System.out.println("Chose option 1");
+                case 1 : viewAnimals(animals);
                 break;
-                case 2 : System.out.println("Chose option 2");
+                case 2 : addAnimal(animal, sc, animalArray, animals);
                 break;
                 case 3 : System.out.println("Chose option 3");
                 break;
@@ -36,5 +41,29 @@ public class ZoopApp {
         }
 
         System.out.println("Goodbye");
+    }
+
+    public static void addAnimal(Animal animal_, Scanner sc, String[] animal, ArrayList<String[]> animals){
+
+        System.out.println("Enter the name and species of the animal.");
+        System.out.print("Name: ");
+        animal_.name = sc.nextLine();
+
+        System.out.print("Species: ");
+        animal_.species = sc.nextLine();
+
+        animal[0] = animal_.name;
+        animal[1] = animal_.species;
+
+
+        animals.add(animal);
+
+
+    }
+
+    public static void viewAnimals(ArrayList<String[]> animals){
+        for(String[] newAnimal : animals){
+            System.out.println(Arrays.toString(newAnimal));
+        }
     }
 }
