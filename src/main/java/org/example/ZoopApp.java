@@ -6,8 +6,6 @@ import java.util.Scanner;
 
 public class ZoopApp {
     public static void main(String[] args) {
-        Animal animal= new Animal();
-        String[] animalArray = new String[2];
         ArrayList<String[]> animals = new ArrayList<>();
 
         System.out.println("""
@@ -15,24 +13,27 @@ public class ZoopApp {
                 ====================================
                 """);
 
-        System.out.println("""
+        Scanner sc = new Scanner(System.in);
+        int option = 0;
+
+        while(option != 4){
+
+            System.out.println("""
+                
                 1. View Animals
                 2. Add Animal
                 3. Search Animal
                 4. Exit
                 """);
-        Scanner sc = new Scanner(System.in);
-        int option = 0;
-
-        while(option != 4){
             System.out.print("option (1-4): ");
+
             option = sc.nextInt();
             sc.nextLine();
 
             switch (option){
                 case 1 : viewAnimals(animals);
                 break;
-                case 2 : addAnimal(animal, sc, animalArray, animals);
+                case 2 : addAnimal(sc, animals);
                 break;
                 case 3 : System.out.println("Chose option 3");
                 break;
@@ -43,8 +44,9 @@ public class ZoopApp {
         System.out.println("Goodbye");
     }
 
-    public static void addAnimal(Animal animal_, Scanner sc, String[] animal, ArrayList<String[]> animals){
-
+    public static void addAnimal(Scanner sc, ArrayList<String[]> animals){
+        Animal animal_ = new Animal();
+        String[] animal = new String[2];
         System.out.println("Enter the name and species of the animal.");
         System.out.print("Name: ");
         animal_.name = sc.nextLine();
@@ -62,8 +64,16 @@ public class ZoopApp {
     }
 
     public static void viewAnimals(ArrayList<String[]> animals){
+        System.out.println("""
+                
+                Animal List
+                -----------""");
         for(String[] newAnimal : animals){
-            System.out.println(Arrays.toString(newAnimal));
+            System.out.println("Name: " + newAnimal[0] +
+                    "\nspecies: " + newAnimal[1] + "\n");
         }
+
+        System.out.println("""
+                -----------""");
     }
 }
