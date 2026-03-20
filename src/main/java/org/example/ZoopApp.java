@@ -1,5 +1,6 @@
 package org.example;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -19,7 +20,7 @@ public class ZoopApp {
         while(option != 4){
 
             System.out.println("""
-                
+                ---------------
                 1. View Animals
                 2. Add Animal
                 3. Search Animal
@@ -84,15 +85,22 @@ public class ZoopApp {
         System.out.println("Enter animal name to search: ");
         String name = sc.nextLine();
 
+        boolean notFound = false;
+
         for(String[] animal: animals){
             if(name.equalsIgnoreCase(animal[0])){
                 System.out.println("Animal Found");
                 System.out.println("Name: " + animal[0] +
                         "\nspecies: " + animal[1]);
+                notFound = true;
             }
-            else{
-                System.out.println("Animal not found!");
-            }
+
         }
+
+        if(!notFound){
+            System.out.println(name + " not found!");
+        }
+
+
     }
 }
