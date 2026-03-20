@@ -45,14 +45,17 @@ public class ZoopApp {
     }
 
     public static void addAnimal(Scanner sc, ArrayList<String[]> animals){
-        Animal animal_ = new Animal();
+
         String[] animal = new String[2];
         System.out.println("Enter the name and species of the animal.");
         System.out.print("Name: ");
-        animal_.name = sc.nextLine();
+
+        String name = sc.nextLine();
 
         System.out.print("Species: ");
-        animal_.species = sc.nextLine();
+        String species = sc.nextLine();
+        Animal animal_ = new Animal(name, species);
+
 
         animal[0] = animal_.name;
         animal[1] = animal_.species;
@@ -86,7 +89,6 @@ public class ZoopApp {
                 System.out.println("Animal Found");
                 System.out.println("Name: " + animal[0] +
                         "\nspecies: " + animal[1]);
-                return;
             }
             else{
                 System.out.println("Animal not found!");
